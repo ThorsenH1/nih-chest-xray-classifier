@@ -1,0 +1,15 @@
+Sykdom,AUC,Positive
+Hernia,0.9283,86
+Emphysema,0.8946,1093
+Cardiomegaly,0.8751,1069
+Pneumothorax,0.8583,2665
+Edema,0.8332,925
+Effusion,0.8089,4658
+Fibrosis,0.8066,435
+Mass,0.7697,1748
+Pleural_Thickening,0.7601,1143
+Atelectasis,0.7476,3279
+Consolidation,0.7305,1815
+Nodule,0.7152,1623
+Pneumonia,0.7034,555
+Infiltration,0.6987,6112

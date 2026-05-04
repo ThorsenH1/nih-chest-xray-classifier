@@ -1,0 +1,10 @@
+data/
+*.zip
+*.pt
+*.pth
+checkpoints/
+.kaggle/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
