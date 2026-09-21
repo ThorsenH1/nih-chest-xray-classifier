@@ -73,14 +73,23 @@ def load_model(checkpoint_path: str, device: torch.device) -> torch.nn.Module:
     model = models.resnet50(weights=None)
     model.fc = torch.nn.Linear(model.fc.in_features, len(DISEASE_LABELS))
 
-    ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+    # Checkpointet inneholder vekter og enkle NumPy-metadata. Vi tillater bare
+    # disse datatypene og unngår vilkårlig kode ved lasting.
+    from numpy._core.multiarray import scalar
+
+    torch.serialization.add_safe_globals([
+        np.dtype,
+        scalar,
+        type(np.dtype(np.float64)),
+    ])
+    ckpt = torch.load(checkpoint_path, map_location=device, weights_only=True)
     model.load_state_dict(ckpt["model_state_dict"])
     model.eval()
     model.to(device)
 
     val_auc = ckpt.get("val_auc", "?")
     epoch   = ckpt.get("epoch", "?")
-    print(f"✅ Modell lastet  (epoke={epoch}, val_AUC={val_auc:.4f})")
+    print(f"Modell lastet  (epoke={epoch}, val_AUC={val_auc:.4f})")
     return model
 
 
@@ -348,7 +357,7 @@ def main():
     gradcam = GradCAM(model)
     demo    = build_ui(model, gradcam, device)
 
-    print(f"\n🚀 Åpner demo på http://localhost:{args.port}")
+    print(f"\nStarter demo på http://localhost:{args.port}")
     demo.launch(server_port=args.port, inbrowser=True)
 
 

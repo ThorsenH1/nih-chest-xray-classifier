@@ -1,0 +1,12 @@
+{
+  "model": "D:\\b\u00e6rbar pc\\Portfolio\\nih-chest-xray-classifier-remote\\best_model.pt",
+  "data_dir": "D:\\relevant_projects\\chest_xray",
+  "test_images": 25596,
+  "device": "cuda",
+  "elapsed_seconds": 1667.3,
+  "mean_auroc": 0.795,
+  "mean_average_precision": 0.2564,
+  "mean_brier_score": 0.2037,
+  "mean_ece_15_bins": 0.316,
+  "threshold_note": "Sensitivity and precision use a fixed 0.5 threshold. Do not use them as clinical thresholds."
+}

@@ -8,3 +8,6 @@ checkpoints/
 __pycache__/
 *.pyc
 .DS_Store
+smoke_audit/
+full_training_run/
+audit_results/test_predictions.npz
